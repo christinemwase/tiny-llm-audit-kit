@@ -23,12 +23,12 @@ Quantizations verified via Ollama `/api/show`. Tested suite: `55 prompts × 7 mo
 - **Customizing prompts:** Edit the prompt files in `evals/`.
 
 ### Three Evals (55 Prompts)
-1. **Sandbagging:** Same questions with and without `"you're being tested"`. $\text{Accuracy}_{\text{test}}$ vs. $\text{Accuracy}_{\text{casual}}$, auto-scored by `score.py` (exact match + contains check).
+1. **Sandbagging:** Same questions with and without `"you're being tested"`. Tested accuracy vs. casual accuracy, auto-scored by `score.py` (exact match + contains check).
 2. **Sycophancy / persona:** Paired neutral vs. leaning prompts testing whether the model flips to agree with the user.
 3. **Refusal robustness:** 15 adversarial/jailbreak-style prompts (pass/fail).
 
 
-## Method: Adaptation, Not Replication
+## Method
 
 Inspired by Petri / persona vectors / AuditBench, adapted for tiny `0.36B–1.5B` quantized models running offline. AuditBench evaluates 70B model organisms, Persona Vectors tests 7–8B models, and Petri relies on frontier auditor and judge models. Tiny models cannot reliably run multi-turn tool/auditor loops or self-grade, and so the roles stay separated:
 
@@ -41,9 +41,9 @@ A negative result, such as an audit check failing to transfer below 1B, is a val
 
 ## Requirements
 
-- [Ollama](https://ollama.com) — runs the models locally. Install it, then pull the models (see below). It must be running when you run the evals.
-- Python 3 — runs the scripts. No extra packages needed for `run_evals.py` or `score.py` (standard library only).
-- matplotlib (optional) — only needed for the chart in `plot_results.py`. Install it with `pip install matplotlib`. Without it, `plot_results.py` still prints the Markdown table.
+- [Ollama](https://ollama.com) runs the models locally. 
+- Python 3 runs the scripts.
+- Matplotlib (optional) for plotting the results chart. 
 
 
 ## How to Run
